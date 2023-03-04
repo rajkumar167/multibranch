@@ -1,39 +1,13 @@
-# ---- Base Node ----
-FROM alpine:3.5 AS base
-# install node
-RUN apk add --no-cache nodejs-current tini
-# set working directory
-WORKDIR /root/chat
-# Set tini as entrypoint
-ENTRYPOINT ["/sbin/tini", "--"]
-# copy project file
-COPY package.json .
+# use a node base image
+FROM node:7-onbuild
 
-#
-# ---- Dependencies ----
-FROM base AS dependencies
-# install node packages
-RUN npm set progress=false && npm config set depth 0
-RUN npm install --only=production 
-# copy production node_modules aside
-RUN cp -R node_modules prod_node_modules
-# install ALL node_modules, including 'devDependencies'
-RUN npm install
+# set maintainer
+LABEL maintainer "academy@release.works"
 
-#
-# ---- Test ----
-# run linters, setup and tests
-FROM dependencies AS test
-COPY . .
-RUN  npm run lint && npm run setup && npm run test
+# set a health check
+HEALTHCHECK --interval=5s \
+            --timeout=5s \
+            CMD curl -f http://127.0.0.1:8000 || exit 1
 
-#
-# ---- Release ----
-FROM base AS release
-# copy production node_modules
-COPY --from=dependencies /root/chat/prod_node_modules ./node_modules
-# copy app sources
-COPY . .
-# expose port and define CMD
-EXPOSE 5000
-CMD npm run start
+# tell docker what port to expose
+EXPOSE 8000
