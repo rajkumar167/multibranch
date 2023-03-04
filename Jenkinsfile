@@ -22,7 +22,7 @@ pipeline{
             steps{
                 script{
                     withCredentials([file(credentialsId: '', variable: 'dockerhub')]){
-                    sh "dokcer login -u rajkumar167 -p ${dockerhub}"
+                    sh "docker login -u rajkumar167 -p ${dockerhub}"
                     sh "docker push rajkumar167/rajdocker:v2"
                     }
              
