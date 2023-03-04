@@ -1,0 +1,125 @@
+{
+  "SchemaVersion": 2,
+  "ArtifactName": "rajkumar167/trivytesting:v1",
+  "ArtifactType": "container_image",
+  "Metadata": {
+    "OS": {
+      "Family": "alpine",
+      "Name": "3.5.3",
+      "EOSL": true
+    },
+    "ImageID": "sha256:758cd328b34984cd1bede1bda6f366eed2ea8fd6d1f0ac0fb4a92c3582a5409b",
+    "DiffIDs": [
+      "sha256:f566c57e6f2da2364c14195c832b922fd8f4813fd139b8fe45e3454c16e33975",
+      "sha256:41c985183873c2c83b3541f06f850d076c372147fc93422c5d8eb1c2163f20e9",
+      "sha256:39b4dbe95ef4ba134f00f1e1d1632652cbd3ae78e3c5fbac953e4b99f714d41e",
+      "sha256:58f0f0cfa7c4ec79d6f34333fd7a029fd0c05bada172863a78f1d69d6e433c86",
+      "sha256:15cdf8dfc5b0e27f002b01ff6a8f9482b9b1dc146d0d203fad69d1f4c83f08fd",
+      "sha256:3e4d0a5ce8a89865cd2395a385be1295bb8b8103b86c746473907ed571c34ba7"
+    ],
+    "RepoTags": [
+      "project:v1",
+      "rajkumar167/rajdocker:csogntest",
+      "rajkumar167/rajdocker:projectlatest",
+      "rajkumar167/rajdocker:v2",
+      "rajkumar167/trivytesting:v1"
+    ],
+    "RepoDigests": [
+      "rajkumar167/rajdocker@sha256:bd039dd667794ebfd437f8f53d15fc870eec58e6ff3a4e7c7df25bf9ac6ed78c",
+      "rajkumar167/trivytesting@sha256:bd039dd667794ebfd437f8f53d15fc870eec58e6ff3a4e7c7df25bf9ac6ed78c"
+    ],
+    "ImageConfig": {
+      "architecture": "amd64",
+      "created": "2023-02-23T10:16:53.06380929Z",
+      "history": [
+        {
+          "created": "2019-01-30T22:20:39Z",
+          "created_by": "/bin/sh -c #(nop) ADD file:84d23bb1bfe03587c0240a314d11a859e342962fa90b57db5661c22aa67a439b in / "
+        },
+        {
+          "created": "2019-01-30T22:20:40Z",
+          "created_by": "/bin/sh -c #(nop)  CMD [\"/bin/sh\"]",
+          "empty_layer": true
+        },
+        {
+          "created": "2023-02-23T10:16:43Z",
+          "created_by": "RUN /bin/sh -c apk add --no-cache nodejs-current tini # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2023-02-23T10:16:43Z",
+          "created_by": "WORKDIR /root/chat",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2023-02-23T10:16:43Z",
+          "created_by": "ENTRYPOINT [\"/sbin/tini\" \"--\"]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2023-02-23T10:16:43Z",
+          "created_by": "COPY package.json . # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2023-02-23T10:16:53Z",
+          "created_by": "COPY /root/chat/prod_node_modules ./node_modules # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2023-02-23T10:16:53Z",
+          "created_by": "COPY . . # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2023-02-23T10:16:53Z",
+          "created_by": "EXPOSE map[5000/tcp:{}]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2023-02-23T10:16:53Z",
+          "created_by": "CMD [\"/bin/sh\" \"-c\" \"npm run start\"]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        }
+      ],
+      "os": "linux",
+      "rootfs": {
+        "type": "layers",
+        "diff_ids": [
+          "sha256:f566c57e6f2da2364c14195c832b922fd8f4813fd139b8fe45e3454c16e33975",
+          "sha256:41c985183873c2c83b3541f06f850d076c372147fc93422c5d8eb1c2163f20e9",
+          "sha256:39b4dbe95ef4ba134f00f1e1d1632652cbd3ae78e3c5fbac953e4b99f714d41e",
+          "sha256:58f0f0cfa7c4ec79d6f34333fd7a029fd0c05bada172863a78f1d69d6e433c86",
+          "sha256:15cdf8dfc5b0e27f002b01ff6a8f9482b9b1dc146d0d203fad69d1f4c83f08fd",
+          "sha256:3e4d0a5ce8a89865cd2395a385be1295bb8b8103b86c746473907ed571c34ba7"
+        ]
+      },
+      "config": {
+        "Cmd": [
+          "/bin/sh",
+          "-c",
+          "npm run start"
+        ],
+        "Entrypoint": [
+          "/sbin/tini",
+          "--"
+        ],
+        "Env": [
+          "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+        ],
+        "WorkingDir": "/root/chat",
+        "ArgsEscaped": true
+      }
+    }
+  },
+  "Results": [
+    {
+      "Target": "rajkumar167/trivytesting:v1 (alpine 3.5.3)",
+      "Class": "os-pkgs",
+      "Type": "alpine"
+    }
+  ]
+}

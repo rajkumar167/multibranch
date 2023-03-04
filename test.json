@@ -1,0 +1,159 @@
+{
+  "SchemaVersion": 2,
+  "ArtifactName": "automation:v1",
+  "ArtifactType": "container_image",
+  "Metadata": {
+    "OS": {
+      "Family": "alpine",
+      "Name": "3.5.3",
+      "EOSL": true
+    },
+    "ImageID": "sha256:12fc2570c146b296feaf6dbe26449639183c53682cb2717dcb99cd5d196d82fa",
+    "DiffIDs": [
+      "sha256:f566c57e6f2da2364c14195c832b922fd8f4813fd139b8fe45e3454c16e33975",
+      "sha256:41c985183873c2c83b3541f06f850d076c372147fc93422c5d8eb1c2163f20e9",
+      "sha256:39b4dbe95ef4ba134f00f1e1d1632652cbd3ae78e3c5fbac953e4b99f714d41e",
+      "sha256:58f0f0cfa7c4ec79d6f34333fd7a029fd0c05bada172863a78f1d69d6e433c86",
+      "sha256:15cdf8dfc5b0e27f002b01ff6a8f9482b9b1dc146d0d203fad69d1f4c83f08fd",
+      "sha256:fffc623ab6eff2f97249c0ab4aaff47ed0709ad5e426a633baeb9026d2e92d22"
+    ],
+    "RepoTags": [
+      "automation:v1"
+    ],
+    "ImageConfig": {
+      "architecture": "amd64",
+      "created": "2023-03-02T05:56:34.71902089Z",
+      "history": [
+        {
+          "created": "2019-01-30T22:20:39Z",
+          "created_by": "/bin/sh -c #(nop) ADD file:84d23bb1bfe03587c0240a314d11a859e342962fa90b57db5661c22aa67a439b in / "
+        },
+        {
+          "created": "2019-01-30T22:20:40Z",
+          "created_by": "/bin/sh -c #(nop)  CMD [\"/bin/sh\"]",
+          "empty_layer": true
+        },
+        {
+          "created": "2023-02-23T10:16:43Z",
+          "created_by": "RUN /bin/sh -c apk add --no-cache nodejs-current tini # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2023-02-23T10:16:43Z",
+          "created_by": "WORKDIR /root/chat",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2023-02-23T10:16:43Z",
+          "created_by": "ENTRYPOINT [\"/sbin/tini\" \"--\"]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2023-02-23T10:16:43Z",
+          "created_by": "COPY package.json . # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2023-02-23T10:16:53Z",
+          "created_by": "COPY /root/chat/prod_node_modules ./node_modules # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2023-03-02T05:56:34Z",
+          "created_by": "COPY . . # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2023-03-02T05:56:34Z",
+          "created_by": "EXPOSE map[5000/tcp:{}]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2023-03-02T05:56:34Z",
+          "created_by": "CMD [\"/bin/sh\" \"-c\" \"npm run start\"]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        }
+      ],
+      "os": "linux",
+      "rootfs": {
+        "type": "layers",
+        "diff_ids": [
+          "sha256:f566c57e6f2da2364c14195c832b922fd8f4813fd139b8fe45e3454c16e33975",
+          "sha256:41c985183873c2c83b3541f06f850d076c372147fc93422c5d8eb1c2163f20e9",
+          "sha256:39b4dbe95ef4ba134f00f1e1d1632652cbd3ae78e3c5fbac953e4b99f714d41e",
+          "sha256:58f0f0cfa7c4ec79d6f34333fd7a029fd0c05bada172863a78f1d69d6e433c86",
+          "sha256:15cdf8dfc5b0e27f002b01ff6a8f9482b9b1dc146d0d203fad69d1f4c83f08fd",
+          "sha256:fffc623ab6eff2f97249c0ab4aaff47ed0709ad5e426a633baeb9026d2e92d22"
+        ]
+      },
+      "config": {
+        "Cmd": [
+          "/bin/sh",
+          "-c",
+          "npm run start"
+        ],
+        "Entrypoint": [
+          "/sbin/tini",
+          "--"
+        ],
+        "Env": [
+          "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+        ],
+        "WorkingDir": "/root/chat",
+        "ArgsEscaped": true
+      }
+    }
+  },
+  "Results": [
+    {
+      "Target": "automation:v1 (alpine 3.5.3)",
+      "Class": "os-pkgs",
+      "Type": "alpine"
+    },
+    {
+      "Target": "/root/chat/cosign.key",
+      "Class": "secret",
+      "Secrets": [
+        {
+          "RuleID": "private-key",
+          "Category": "AsymmetricPrivateKey",
+          "Severity": "HIGH",
+          "Title": "Asymmetric Private Key",
+          "StartLine": 1,
+          "EndLine": 1,
+          "Code": {
+            "Lines": [
+              {
+                "Number": 1,
+                "Content": "-----BEGIN ENCRYPTED COSIGN PRIVATE KEY-----**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************-----END ENCRYPTED COSIGN PRIVATE KEY-----",
+                "IsCause": true,
+                "Annotation": "",
+                "Truncated": false,
+                "Highlighted": "-----BEGIN ENCRYPTED COSIGN PRIVATE KEY-----**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************-----END ENCRYPTED COSIGN PRIVATE KEY-----",
+                "FirstCause": true,
+                "LastCause": true
+              },
+              {
+                "Number": 2,
+                "Content": "",
+                "IsCause": false,
+                "Annotation": "",
+                "Truncated": false,
+                "FirstCause": false,
+                "LastCause": false
+              }
+            ]
+          },
+          "Match": "RYPTED COSIGN PRIVATE KEY-----**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************-----END ENCRYPTED C",
+          "Layer": {
+            "DiffID": "sha256:fffc623ab6eff2f97249c0ab4aaff47ed0709ad5e426a633baeb9026d2e92d22",
+            "CreatedBy": "COPY . . # buildkit"
+          }
+        }
+      ]
+    }
+  ]
+}
