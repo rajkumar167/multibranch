@@ -1,6 +1,6 @@
 pipeline{
     agent any
-    #stages{
+    stages{
         #stage("check code from git hub"){
            # steps{
                # checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/rajkumar167/jenkinstest']])
@@ -12,7 +12,7 @@ pipeline{
         stage("check branches") {
             when { anyOf { branch 'prod'; branch 'test' } }
             steps {
-                echo "Run only pro and dev"
+                echo "Run only pro and test"
             }
         }
         stage("build docker image"){
