@@ -10,7 +10,7 @@ pipeline{
         }
 
         stage("check branches") {
-            when { anyOf { branch 'prod'; branch 'dev' } }
+            when { anyOf { branch 'prod'; branch 'test' } }
             steps {
                 echo "Run only pro and dev"
             }
