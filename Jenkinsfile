@@ -7,7 +7,7 @@ pipline{
     }
     steps {
         script{
-             sh "docker build -t rajkumar167/rajdocker ."
+             sh "docker build -t rajkumar167/rajdockermarch ."
         }
         echo 'run this stage - ony if the branch = main branch'
     }
@@ -17,6 +17,9 @@ stage('when branch is dev') {
         branch 'dev'
     }
     steps {
+        script{
+            sh "trivy image rajkumar167/rajdockermarch
+        }
         echo 'run this stage - ony if the branch = dev branch'
     }
 }
