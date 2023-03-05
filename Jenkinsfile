@@ -1,41 +1,25 @@
-pipeline{
+pipline{
     agent any
     stages{
-        stage("check code from git hub"){
-            steps{
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/rajkumar167/multibranch']])
-
-            }
-
-        }
-
-        stage("check branches") {
-            when { anyOf { branch 'feature'; branch 'test' } }
-            steps {
-                echo "Run only pro and test"
-            }
-        }
-        stage("build docker image"){
-            steps{
-                script{
-                    sh "docker build -t  rajkumar167/rajdocker:v2 ."
-
-                }
-                
-            }
-        }
-
-        stage("push image on docker hub"){
-            steps{
-                script{
-                    withCredentials([string(credentialsId: 'hub', variable: 'csdocker')]){
-                    sh "docker login -u rajkumar167 -p ${csdocker}"
-                    sh "docker push rajkumar167/rajdocker:v2"
-                    }
-             
-                }
-            }
-        }
-
+        stage('when branch is main') {
+    when {
+        branch 'main'
     }
+    steps {
+        script{
+             sh "docker build -t rajkumar167/rajdocker ."
+        }
+        echo 'run this stage - ony if the branch = main branch'
+    }
+}
+stage('when branch is dev') {
+    when {
+        branch 'dev'
+    }
+    steps {
+        echo 'run this stage - ony if the branch = dev branch'
+    }
+}
+    }
+   
 }
