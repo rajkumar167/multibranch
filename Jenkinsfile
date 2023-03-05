@@ -8,6 +8,13 @@ pipeline{
             }
 
         }
+
+        stage("check branches") {
+            when { anyOf { branch 'prod'; branch 'dev' } }
+            steps {
+                echo "Run only pro and dev"
+            }
+        }
         stage("build docker image"){
             steps{
                 script{
