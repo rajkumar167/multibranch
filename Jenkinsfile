@@ -1,13 +1,13 @@
 pipeline{
     agent any
-    stages{
-        stage("check code from git hub"){
-            steps{
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/rajkumar167/jenkinstest']])
+    #stages{
+        #stage("check code from git hub"){
+           # steps{
+               # checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/rajkumar167/jenkinstest']])
 
-            }
+           # }
 
-        }
+       # }
 
         stage("check branches") {
             when { anyOf { branch 'prod'; branch 'test' } }
